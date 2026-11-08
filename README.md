@@ -28,9 +28,12 @@ terraform/
 6. En el workspace jvp-p11, Settings > General: selecciona Agent como Execution Mode y el pool jvp-p11-pool. Guarda. No debe haber un run pendiente de apply al cambiar el modo.
 7. Conserva Terraform Working Directory = terraform y Auto-apply desactivado.
 8. Variables Terraform: project_name = jvp-p11 (HCL desactivado), external_port = 8080 (HCL activado). Ninguna es Sensitive. No agregues docker_context en HCP: su valor predeterminado null permite usar el socket Linux.
-9. Sube los cambios del proyecto a la rama conectada de GitHub. Esto debe generar un run VCS.
+9. Para un workspace sin runs, inicia el primer run manualmente con Start new plan. HCP requiere este primer run antes de aceptar disparadores VCS. Verifica que use el commit esperado.
 10. Revisa el plan: 3 to add, 0 to change, 0 to destroy para un workspace nuevo sin estado. Confirma Apply en HCP y espera Apply Finished.
-11. Abre http://127.0.0.1:8080 en este equipo para comprobar el GET.
+11. Sube un cambio posterior a la rama main de GitHub para generar un run VCS. Los cambios en server_content reemplazan solo el contenedor; revisa el plan y confirma Apply en HCP.
+12. Abre http://127.0.0.1:8080 en este equipo. La respuesta actualizada debe incluir mensaje Hola desde Terraform Modules y HCP, tarea 8 y modulos network y api.
+
+Para disparar futuros runs cuando solo cambie app/server.py, incluye app/** junto con terraform/** en los patrones de Automatic Run Triggering de Settings > Version Control. Este archivo esta fuera del directorio terraform.
 
 No ejecutes apply local mientras HCP administra estos mismos recursos: cada estado podria intentar administrar los mismos nombres.
 

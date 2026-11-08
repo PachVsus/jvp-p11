@@ -5,8 +5,10 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         body = json.dumps({
-            "mensaje": "Hola desde Terraform y Docker",
+            "mensaje": "Hola desde Terraform Modules y HCP",
             "practica": 11,
+            "tarea": 8,
+            "modulos": ["network", "api"],
             "metodo": "GET",
             "ruta": self.path,
         }, ensure_ascii=False).encode("utf-8")
