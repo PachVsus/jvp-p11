@@ -4,3 +4,8 @@
 *.tfplan
 crash.log
 __pycache__/
+.env
+.env.*
+*.auto.tfvars
+*.auto.tfvars.json
+agent*.list

@@ -9,5 +9,6 @@ terraform {
 }
 
 provider "docker" {
-  context = "desktop-linux"
+  context = var.docker_context
+  host    = var.docker_context == null ? "unix:///var/run/docker.sock" : null
 }

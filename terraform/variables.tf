@@ -1,3 +1,9 @@
+variable "docker_context" {
+  description = "Contexto local en Windows. En el agente Linux se deja null para usar el socket Docker."
+  type        = string
+  default     = null
+}
+
 variable "project_name" {
   description = "Nombre para agrupar los recursos mediante red y etiquetas."
   type        = string

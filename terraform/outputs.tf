@@ -4,13 +4,13 @@ output "url" {
 }
 
 output "container_name" {
-  value = docker_container.api.name
+  value = module.api.container_name
 }
 
 output "network_name" {
-  value = docker_network.project.name
+  value = module.network.name
 }
 
 output "image_id" {
-  value = docker_image.api.image_id
+  value = module.api.image_id
 }
