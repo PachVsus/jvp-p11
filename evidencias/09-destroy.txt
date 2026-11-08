@@ -1,0 +1,8 @@
+docker_container.api: Destroying... [id=d6957f2958e3978a328f4e62eb0a1a6b83887808e0211e4f14e5d9d7a0e84bb6]
+docker_container.api: Destruction complete after 0s
+docker_image.api: Destroying... [id=sha256:2d44738ebf4ce5f63b9d9ea871e9c7cfdc0426f7b0c97cac915fd88ded1d86bbpython:3.13-slim]
+docker_network.project: Destroying... [id=4a9c8fd6aaebe898cddd035e98ac6b3a31f508ac3bc35d103eb0149325f0a0b0]
+docker_image.api: Destruction complete after 1s
+docker_network.project: Destruction complete after 3s
+
+Apply complete! Resources: 0 added, 0 changed, 3 destroyed.

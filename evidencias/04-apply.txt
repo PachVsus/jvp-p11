@@ -1,0 +1,32 @@
+docker_network.project: Creating...
+docker_image.api: Creating...
+docker_network.project: Creation complete after 2s [id=4a9c8fd6aaebe898cddd035e98ac6b3a31f508ac3bc35d103eb0149325f0a0b0]
+docker_image.api: Still creating... [00m10s elapsed]
+docker_image.api: Still creating... [00m20s elapsed]
+docker_image.api: Still creating... [00m30s elapsed]
+docker_image.api: Still creating... [00m40s elapsed]
+docker_image.api: Still creating... [00m50s elapsed]
+docker_image.api: Still creating... [01m00s elapsed]
+docker_image.api: Still creating... [01m10s elapsed]
+docker_image.api: Still creating... [01m20s elapsed]
+docker_image.api: Still creating... [01m30s elapsed]
+docker_image.api: Still creating... [01m40s elapsed]
+docker_image.api: Still creating... [01m50s elapsed]
+docker_image.api: Still creating... [02m00s elapsed]
+docker_image.api: Still creating... [02m10s elapsed]
+docker_image.api: Still creating... [02m20s elapsed]
+docker_image.api: Still creating... [02m30s elapsed]
+docker_image.api: Still creating... [02m40s elapsed]
+docker_image.api: Still creating... [02m50s elapsed]
+docker_image.api: Creation complete after 2m56s [id=sha256:2d44738ebf4ce5f63b9d9ea871e9c7cfdc0426f7b0c97cac915fd88ded1d86bbpython:3.13-slim]
+docker_container.api: Creating...
+docker_container.api: Creation complete after 2s [id=d6957f2958e3978a328f4e62eb0a1a6b83887808e0211e4f14e5d9d7a0e84bb6]
+
+Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+container_name = "jvp-p11-api"
+image_id = "sha256:2d44738ebf4ce5f63b9d9ea871e9c7cfdc0426f7b0c97cac915fd88ded1d86bb"
+network_name = "jvp-p11-network"
+url = "http://127.0.0.1:8080"

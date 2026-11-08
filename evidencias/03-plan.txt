@@ -1,0 +1,144 @@
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # docker_container.api will be created
+  + resource "docker_container" "api" {
+      + attach                                      = false
+      + bridge                                      = (known after apply)
+      + command                                     = [
+          + "python",
+          + "-u",
+          + "/app/server.py",
+        ]
+      + container_logs                              = (known after apply)
+      + container_read_refresh_timeout_milliseconds = 15000
+      + entrypoint                                  = (known after apply)
+      + env                                         = (known after apply)
+      + exit_code                                   = (known after apply)
+      + hostname                                    = (known after apply)
+      + id                                          = (known after apply)
+      + image                                       = (known after apply)
+      + init                                        = (known after apply)
+      + ipc_mode                                    = (known after apply)
+      + log_driver                                  = (known after apply)
+      + logs                                        = false
+      + memory_reservation                          = 0
+      + must_run                                    = true
+      + name                                        = "jvp-p11-api"
+      + network_data                                = (known after apply)
+      + network_mode                                = "bridge"
+      + platform                                    = (known after apply)
+      + read_only                                   = false
+      + remove_volumes                              = true
+      + restart                                     = "no"
+      + rm                                          = false
+      + runtime                                     = (known after apply)
+      + security_opts                               = (known after apply)
+      + shm_size                                    = (known after apply)
+      + start                                       = true
+      + stdin_open                                  = false
+      + stop_signal                                 = (known after apply)
+      + stop_timeout                                = (known after apply)
+      + tty                                         = false
+      + user                                        = "10001:10001"
+      + wait                                        = false
+      + wait_timeout                                = 60
+
+      + healthcheck (known after apply)
+
+      + labels {
+          + label = "project"
+          + value = "jvp-p11"
+        }
+
+      + networks_advanced {
+          + aliases        = []
+          + driver_opts    = []
+          + link_local_ips = []
+          + name           = "jvp-p11-network"
+            # (3 unchanged attributes hidden)
+        }
+
+      + ports {
+          + external = 8080
+          + internal = 8000
+          + ip       = "127.0.0.1"
+          + protocol = "tcp"
+        }
+
+      + upload {
+          + content        = <<-EOT
+                import json
+                from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+                
+                
+                class Handler(BaseHTTPRequestHandler):
+                    def do_GET(self):
+                        body = json.dumps({
+                            "mensaje": "Hola desde Terraform y Docker",
+                            "practica": 11,
+                            "metodo": "GET",
+                            "ruta": self.path,
+                        }, ensure_ascii=False).encode("utf-8")
+                        self.send_response(200)
+                        self.send_header("Content-Type", "application/json; charset=utf-8")
+                        self.send_header("Content-Length", str(len(body)))
+                        self.end_headers()
+                        self.wfile.write(body)
+                
+                
+                if __name__ == "__main__":
+                    print("Servicio GET escuchando en el puerto 8000", flush=True)
+                    ThreadingHTTPServer(("0.0.0.0", 8000), Handler).serve_forever()
+            EOT
+          + executable     = false
+          + file           = "/app/server.py"
+            # (6 unchanged attributes hidden)
+        }
+    }
+
+  # docker_image.api will be created
+  + resource "docker_image" "api" {
+      + id           = (known after apply)
+      + image_id     = (known after apply)
+      + keep_locally = false
+      + name         = "python:3.13-slim"
+      + repo_digest  = (known after apply)
+    }
+
+  # docker_network.project will be created
+  + resource "docker_network" "project" {
+      + driver      = (known after apply)
+      + id          = (known after apply)
+      + internal    = (known after apply)
+      + ipam_driver = "default"
+      + name        = "jvp-p11-network"
+      + options     = (known after apply)
+      + scope       = (known after apply)
+
+      + ipam_config (known after apply)
+
+      + labels {
+          + label = "project"
+          + value = "jvp-p11"
+        }
+    }
+
+Plan: 3 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + container_name = "jvp-p11-api"
+  + image_id       = (known after apply)
+  + network_name   = "jvp-p11-network"
+  + url            = "http://127.0.0.1:8080"
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: practica.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "practica.tfplan"

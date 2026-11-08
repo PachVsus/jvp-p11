@@ -1,0 +1,6 @@
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                      NAMES
+d6957f2958e3   2d44738ebf4c   "python -u /app/serv…"   12 seconds ago   Up 11 seconds   127.0.0.1:8080->8000/tcp   jvp-p11-api
+NETWORK ID     NAME              DRIVER    SCOPE
+4a9c8fd6aaeb   jvp-p11-network   bridge    local
+IMAGE              ID             DISK USAGE   CONTENT SIZE   EXTRA
+python:3.13-slim   2d44738ebf4c        178MB         45.3MB   U    

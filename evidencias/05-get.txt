@@ -1,0 +1,2 @@
+HTTP 200
+{"mensaje": "Hola desde Terraform y Docker", "practica": 11, "metodo": "GET", "ruta": "/"}
